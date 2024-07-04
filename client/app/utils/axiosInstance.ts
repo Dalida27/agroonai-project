@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:7070/api/v1',
+  baseURL: 'https://agroonai-project-backend.onrender.com',
 });
 
 instance.interceptors.request.use((config) => {
