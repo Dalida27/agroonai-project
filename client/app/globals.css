@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: white;
+  --text-color: black;
+  --primary-color: #78b94d;
+}
+
+[data-theme="dark"] {
+  --background-color: black;
+  --text-color:black;
+  --primary-color: #4d4d4d;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
