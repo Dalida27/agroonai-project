@@ -9,7 +9,7 @@ const CardUser = ({ clientCount }) => {
       </div>
       <div className="">
         <span className="text-xl font-bold text-[#78b94d]">{clientCount}</span>
-        <p className="text-sm mt-3">Можете посмотрить в кладке "Клиенты"</p>
+        <p className="text-sm mt-3">Можете посмотрить в кладке Клиенты</p>
       </div>
     </div>
   )
