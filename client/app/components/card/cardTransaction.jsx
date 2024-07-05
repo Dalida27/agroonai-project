@@ -9,7 +9,7 @@ const CardAI = ({ transactionCount }) => {
       </div>
       <div className="">
         <span className="text-xl font-bold text-[#78b94d]">{ transactionCount }</span>
-        <p className="text-sm mt-3">Можете посмотреть в кладке "Заказы"</p>
+        <p className="text-sm mt-3">Можете посмотреть в кладке Заказы</p>
       </div>
     </div>
   ) 
