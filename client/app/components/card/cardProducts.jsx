@@ -9,7 +9,7 @@ const CardProducts = ({ productCount }) => {
       </div>
       <div className="">
         <span className="text-xl font-bold text-[#78b94d]">{productCount}</span>
-        <p className="text-sm mt-3">Можете посмотреть в кладке Продукты</p>
+        <p className="text-sm mt-3">Можете посмотреть в кладке Продукты.</p>
       </div>
     </div>
   );
