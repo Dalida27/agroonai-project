@@ -14,14 +14,14 @@ const app = express();
 
 connectDB();
 
-// app.use((req, res, next) => {
-//   const start = Date.now();
-//   res.on('finish', () => {
-//     const duration = Date.now() - start;
-//     console.log(`${req.method} ${req.baseUrl} ${res.statusCode} - ${duration}ms`);
-//   });
-//   next();
-// });
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.baseUrl} ${res.statusCode} - ${duration}ms`);
+  });
+  next();
+});
 
 app.use(cors({credentials: true}));
 app.use(express.json());
