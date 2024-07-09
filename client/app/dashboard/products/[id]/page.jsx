@@ -16,7 +16,7 @@ const EditProductPage = ({ params }) => {
     description: '',
     fertilizer: ''
   });
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
   const { id } = params;
@@ -151,5 +151,14 @@ const EditProductPage = ({ params }) => {
     </div>
   );
 };
+
+// export const generateStaticParams = async () => {
+//   const response = await axios.get('/products');
+//   const products = response.data;
+
+//   return products.map((product) => ({
+//     id: product.id.toString(),
+//   }));
+// };
 
 export default EditProductPage;
