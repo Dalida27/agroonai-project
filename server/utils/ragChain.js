@@ -7,6 +7,7 @@ const { PromptTemplate } = require("@langchain/core/prompts");
 const { createRetrievalChain } = require("langchain/chains/retrieval");
 const { createStuffDocumentsChain } = require("langchain/chains/combine_documents");
 
+
 const getRagChain = async (product) => {  
   try {
     const prompt = PromptTemplate.fromTemplate("Answer the user's question: {input} {context}")
@@ -28,7 +29,7 @@ const getRagChain = async (product) => {
       combineDocsChain,
     });
 
-    const query = `Ты специалист по аграрному рынку Казахстана. К тебе отправляют продукт "${product}". Твоя задача — сравнить его с данными и предложить оптимальную, а точнее среднюю цену. И всегда пиши, что это цена на данный момент, результат выдавай только на русском языке, и не бери в учет данные, которые имеют слова: соленья, банки, соленые, огонек, заготовки, кобра`;
+    const query = `Ты являешься специалистом по аграрному рынку Казахстана. Тебе поступил продукт "${product}". Твоя задача — проанализировать его с учетом текущих данных и предложить оптимальную, а именно среднюю цену на данный момент. Пожалуйста, предоставь результат только на русском языке. Обрати внимание, что данные, содержащие слова "соленья", "банки", "соленые", "огонек", "заготовки", "кобра" не должны учитываться.`;
 
     const response = await retrievalChain.invoke({ input: query });
 
