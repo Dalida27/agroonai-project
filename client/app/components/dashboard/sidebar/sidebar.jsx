@@ -4,6 +4,8 @@ import { MdAnalytics, MdDashboard, MdHelpCenter, MdLogout, MdOutlineSettings, Md
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { GrTransaction } from "react-icons/gr";
 import { useRouter } from 'next/navigation';
+import { FaMoneyBillWave } from "react-icons/fa";
+import { GoGraph } from "react-icons/go";
 import { useContext } from 'react';
 import MenuLink from './menuLink/menuLink';
 import { AuthContext } from '../../../context/AuthContext';
@@ -32,6 +34,11 @@ const menuItems = [
         path: "/dashboard/transactions",
         icons: <GrTransaction />,
       },
+      {
+        title: "Расходы",
+        path: "/dashboard/expenses",
+        icons: <FaMoneyBillWave />,
+      },                          
     ],
   },
   {
@@ -41,6 +48,11 @@ const menuItems = [
         title: "ИИ помощник",
         path: "/dashboard/recommedations",
         icons: <GiArtificialIntelligence />,
+      },
+      {
+        title: "Отчеты",
+        path: "/dashboard/finance",
+        icons: <GoGraph />,
       },
     ],
   },

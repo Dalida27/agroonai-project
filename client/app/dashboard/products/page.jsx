@@ -12,7 +12,7 @@ const ProductsPage = () => {
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true); // Добавляем состояние загрузки
+  const [loading, setLoading] = useState(true);
   const productsPerPage = 7;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ProductsPage = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setLoading(false); // Отключаем состояние загрузки
+        setLoading(false);
       }
     };
     fetchProducts();
@@ -43,7 +43,7 @@ const ProductsPage = () => {
   }, [search, products]);
 
   const deleteProduct = async (id) => {
-    setLoading(true); // Включаем состояние загрузки
+    setLoading(true);
     try {
       await axios.delete(`/products/${id}`);
       setProducts(products.filter(product => product._id !== id));
@@ -57,7 +57,7 @@ const ProductsPage = () => {
         position: "top-right",
       });
     } finally {
-      setLoading(false); // Отключаем состояние загрузки
+      setLoading(false);
     }
   };
 
@@ -68,7 +68,7 @@ const ProductsPage = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   if (loading) {
-    return <Loading />; // Отображаем компонент загрузки
+    return <Loading />;
   }
 
   return (

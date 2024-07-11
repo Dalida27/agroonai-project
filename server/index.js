@@ -7,6 +7,7 @@ const authRouter = require("./routes/auth");
 const productRouter = require('./routes/product');
 const clientRouter = require('./routes/client');
 const transactionRouter = require('./routes/transaction');
+const expenseRouter = require('./routes/expense.js')
 const scrapeAndUpload = require('./utils/scrapeAndUpload.js');
 const getRagChain = require("./utils/ragChain.js");
 
@@ -36,6 +37,7 @@ app.use('/api/v1/users', authRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/clients', clientRouter);
 app.use('/api/v1/transactions', transactionRouter);
+app.use('/api/v1/expenses', expenseRouter);
 
 const PORT = process.env.PORT || 8080;
 

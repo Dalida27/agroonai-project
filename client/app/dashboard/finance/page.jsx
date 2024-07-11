@@ -1,27 +1,19 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { useRouter } from 'next/navigation';
-import axios from '../utils/axiosInstance';
-import CardUser from "../components/card/cardUser";
-import CardProducts from "../components/card/cardProducts";
-import CardTransaction from "../components/card/cardTransaction";
-import CardAnalys from '../components/card/cardAnalys';
-import ChartProfit from "../components/chart/chartProfit";
-import Transactions from "../components/transactions/transactions";
-import Loading from "../components/loading";
+import { useEffect, useState } from 'react';
+import axios from '../../utils/axiosInstance';
+import ChartIncome from "../../components/chart/chartIncome";
+import ChartProfit from "../../components/chart/chartProfit";
+import ProductPieChart from "../../components/chart/pieChart";
+import Loading from '../../components/loading';
 
-const DashboardPage = () => {
-  const { user, loading } = useContext(AuthContext);
-  const [productCount, setProductCount] = useState(0);
-  const [clientCount, setClientCount] = useState(0);
-  const [transactionCount, setTransactionCount] = useState(0);
+const FinancePage = () => {
   const [transactionData, setTransactionData] = useState([]);
+  const [profitData, setProfitData] = useState([]);
+  const [productData, setProductData] = useState([]);
   const [income, setIncome] = useState(0);
   const [expenses, setExpenses] = useState(0);
-  const [profit, setProfit] = useState(0);
-  const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const getLast7DaysTransactionsAndExpenses = (transactions, expenses) => {
     const today = new Date();
@@ -59,86 +51,61 @@ const DashboardPage = () => {
       const totalExpenses = dailyExpenses.reduce((sum, expense) => sum + expense.price, 0);
       const dailyProfit = totalIncome - totalExpenses;
 
-      return { date, profit: dailyProfit };
+      return { date, income: totalIncome, expenses: totalExpenses, profit: dailyProfit };
     });
 
     return data;
   };
 
   useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
-    }
-  }, [loading, user]);
-
-  useEffect(() => {
-    const fetchProductCount = async () => {
-      try {
-        const response = await axios.get('/products');
-        setProductCount(response.data.length);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchProductCount();
-  }, []);
-
-  useEffect(() => {
-    const fetchClientCount = async () => {
-      try {
-        const response = await axios.get('/clients');
-        setClientCount(response.data.length);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchClientCount();
-  }, []);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const transactionsResponse = await axios.get('/transactions');
         const expensesResponse = await axios.get('/expenses');
+        const productsResponse = await axios.get('/products');
         const transactions = transactionsResponse.data;
         const expenses = expensesResponse.data;
-        setTransactionCount(transactions.length);
-        setTransactionData(getLast7DaysTransactionsAndExpenses(transactions, expenses));
+        const products = productsResponse.data;
+
+        const productDistribution = products.map(product => ({
+          name: product.title,
+          value: product.stock,
+        }));
+
+        const data = getLast7DaysTransactionsAndExpenses(transactions, expenses);
+        setTransactionData(data);
+        setProfitData(data.map(item => ({ date: item.date, profit: item.profit })));
+        setProductData(productDistribution);
         const totalIncome = transactions.reduce((sum, transaction) => sum + transaction.price, 0);
         const totalExpenses = expenses.reduce((sum, expense) => sum + expense.price, 0);
         setIncome(totalIncome);
         setExpenses(totalExpenses);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    setProfit(income - expenses);
-  }, [income, expenses]);
-
   if (loading) {
     return <Loading />;
   }
 
-  return user ? (
+  return (
     <div className="w-full">
-      <div className="flex w-[85%] mx-auto flex-col space-y-5">
-        <div className="flex space-x-5 justify-between">
-          <CardUser clientCount={clientCount} />
-          <CardProducts productCount={productCount} />
-          <CardTransaction transactionCount={transactionCount} />
-        </div>
-        <div>
-          <CardAnalys income={income} expenses={expenses} profit={profit} />
-        </div>
-        <ChartProfit data={transactionData} />
-        <Transactions />
+      <div className="">
+        <ChartIncome data={transactionData} />
+      </div>
+      <div className=" mt-5">
+        <ChartProfit data={profitData} />
+      </div>
+      <div className=" mt-5">
+        <ProductPieChart data={productData} />
       </div>
     </div>
-  ) : null;
-};
+  );
+}
 
-export default DashboardPage;
+export default FinancePage;
