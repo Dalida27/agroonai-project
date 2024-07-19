@@ -70,14 +70,14 @@ const TransactionPage = () => {
   }
 
   return (
-    <div className='bg-white p-5 mt-7 border rounded-lg shadow-lg'>
+    <div className='sm:w-[90%] w-full bg-white p-5 mt-7 border rounded-lg shadow-lg'>
       <div className='flex items-center justify-between mb-5'>
-        <div className="flex w-1/3 items-center space-x-1 bg-neutral-200 p-2 border rounded-lg">
+        <div className="flex sm:w-1/3 w-full items-center space-x-1 bg-neutral-200 p-2 border rounded-lg">
           <MdSearch className="text-gray-400" size={20} />
           <input 
             type="text" 
             placeholder="Поиск заказов..." 
-            className=" bg-neutral-200 border-none text-black w-4/5" 
+            className="bg-neutral-200 border-none text-black w-4/5" 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -94,8 +94,8 @@ const TransactionPage = () => {
           <p className="text-center text-black text-xl">У вас еще нет заказов</p>
         </div>
       ) : (
-      <>
-        <table className="w-full border-collapse">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse min-w-[1000px]">
           <thead>
             <tr className="bg-gray-200">
               <th className="border px-4 py-2 text-left">Имя</th>
@@ -126,7 +126,7 @@ const TransactionPage = () => {
             ))}
           </tbody>
         </table>
-      </>
+      </div>
       )}
       <div className='flex justify-center mt-7'>
         <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 border rounded-l-lg bg-[#78b94d] hover:bg-green-600">

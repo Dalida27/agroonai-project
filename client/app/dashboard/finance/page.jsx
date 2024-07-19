@@ -94,14 +94,14 @@ const FinancePage = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="sm:w-[90%] w-full mx-auto mt-10">
       <div className="">
         <ChartIncome data={transactionData} />
       </div>
-      <div className=" mt-5">
+      <div className="mt-5">
         <ChartProfit data={profitData} />
       </div>
-      <div className=" mt-5">
+      <div className="sm:mt-5 mt-10">
         <ProductPieChart data={productData} />
       </div>
     </div>

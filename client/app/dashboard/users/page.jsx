@@ -15,6 +15,7 @@ const ClientPage = () => {
   const [loading, setLoading] = useState(true);
   const clientsPerPage = 7;
 
+
   useEffect(() => {
     const fetchClients = async () => {
       try {
@@ -71,9 +72,9 @@ const ClientPage = () => {
   }
 
   return (
-    <div className='bg-white p-5 mt-7 border rounded-lg shadow-lg'>
+    <div className='sm:w-[90%] w-full bg-white p-5 mt-7 border rounded-lg shadow-lg'>
       <div className='flex items-center justify-between mb-5'>
-        <div className="flex w-1/3 items-center space-x-1 bg-neutral-200 p-2 border rounded-lg">
+        <div className="flex sm:w-1/3 w-full items-center space-x-1 bg-neutral-200 p-2 border rounded-lg">
           <MdSearch className="text-gray-400" size={20} />
           <input 
             type="text" 
@@ -95,37 +96,39 @@ const ClientPage = () => {
           <p className="text-center text-black text-xl">Вы еще не добавили клиентов</p>
         </div>
       ) : (
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="border px-4 py-2 text-left">Имя</th>
-              <th className="border px-4 py-2 text-left">Почта</th>
-              <th className="border px-4 py-2 text-left">Номер телефона</th>
-              <th className="border px-4 py-2 text-left">Добавлен</th>
-              <th className="border px-4 py-2 text-left">Заказ</th>
-              <th className="border px-4 py-2 text-left">Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentClients.map(client => (
-              <tr key={client._id}>
-                <td className="border px-4 py-2">{client.name}</td>
-                <td className="border px-4 py-2">{client.email}</td>
-                <td className="border px-4 py-2">{client.number}</td>
-                <td className="border px-4 py-2">{new Date(client.addedAt).toLocaleDateString()}</td>
-                <td className="border px-4 py-2">{client.order}</td>
-                <td className="border px-4 py-2 flex items-center space-x-2">
-                  <Link href={`/dashboard/users/${client._id}`} className='text-black font-semibold bg-[#78b94d] hover:bg-green-600 border rounded-lg px-3 py-2'>
-                    <button>Просмотр</button>
-                  </Link>
-                  <button onClick={() => deleteClient(client._id)} className='text-white font-semibold bg-red-500 hover:bg-red-600 border rounded-lg px-3 py-2'>
-                    Удалить
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse min-w-[600px]">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border px-4 py-2 text-left">Имя</th>
+                <th className="border px-4 py-2 text-left">Почта</th>
+                <th className="border px-4 py-2 text-left">Номер телефона</th>
+                <th className="border px-4 py-2 text-left">Добавлен</th>
+                <th className="border px-4 py-2 text-left">Заказ</th>
+                <th className="border px-4 py-2 text-left">Действия</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {currentClients.map(client => (
+                <tr key={client._id}>
+                  <td className="border px-4 py-2">{client.name}</td>
+                  <td className="border px-4 py-2">{client.email}</td>
+                  <td className="border px-4 py-2">{client.number}</td>
+                  <td className="border px-4 py-2">{new Date(client.addedAt).toLocaleDateString()}</td>
+                  <td className="border px-4 py-2">{client.order}</td>
+                  <td className="border px-4 py-2 flex items-center space-x-2">
+                    <Link href={`/dashboard/users/${client._id}`} className='text-black font-semibold bg-[#78b94d] hover:bg-green-600 border rounded-lg px-3 py-2'>
+                      <button>Просмотр</button>
+                    </Link>
+                    <button onClick={() => deleteClient(client._id)} className='text-white font-semibold bg-red-500 hover:bg-red-600 border rounded-lg px-3 py-2'>
+                      Удалить
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
       <div className='flex justify-center mt-7'>
           <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 border rounded-l-lg bg-[#78b94d] hover:bg-green-600">

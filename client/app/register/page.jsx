@@ -57,54 +57,54 @@ const RegisterPage = () => {
 
   return (
     <div className='w-full'>
-      <div className='w-[90%] mx-auto border rounded-lg shadow-lg p-5 mt-7'>
+      <div className='sm:w-[90%] mx-auto border rounded-lg shadow-lg p-5 mt-7'>
         <div className='flex items-center justify-between'>
-              <Link href="/" className='flex items-center hover:border-b hover:border-black w-[10%] mx-3 my-2'>
-                <IoIosArrowRoundBack size={32} />
-                <p>На Главную</p>
-              </Link> 
-              <Link href="/login" className='flex items-center w-[13  %] mx-5 my-3'>
-                <p className='font-semibold border-2 rounded-xl px-3 py-2 border-[#78b94d]'>Страница входа</p>
-              </Link> 
+          <Link href="/" className='flex items-center hover:border-b hover:border-black sm:w-[10%] w-[50%] mx-3 my-2'>
+            <IoIosArrowRoundBack size={32} />
+            <p>На Главную</p>
+          </Link> 
+          <Link href="/login" className='flex items-center sm:w-[13%] w-[50%] mx-5 my-3'>
+            <p className='font-semibold border-2 rounded-xl px-3 py-2 border-[#78b94d]'>Страница входа</p>
+          </Link> 
         </div>
-        <div className='w-[70%] mx-auto border rounded-lg mt-7'>
-          <div className="@container">
+        <div className='w-full sm:w-[70%] mx-auto border rounded-lg mt-7'>
+          <div className="sm:@container w-full">
             <div className="@[480px]:px-4 @[480px]:py-3">
-              <div ref={divRef} className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-white @[480px]:rounded-xl min-h-[218px] border rounded-lg" ></div>
+              <div ref={divRef} className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-white @[480px]:rounded-xl min-h-[218px] border rounded-lg"></div>
             </div>
           </div>
         </div>
-        <div className='w-[70%] mx-auto mt-5'>
+        <div className='w-full sm:w-[70%] mx-auto mt-5'>
           <p className='text-2xl font-semibold'>Добро Пожаловать!</p>
           <p className='text-md font-normal mt-2'>Заполните данные, чтобы продолжить.</p>
         </div>
         <form onSubmit={handleRegister}>
-          <div className='my-10 w-[70%] mx-auto'>
+          <div className='my-10 w-full sm:w-[70%] mx-auto'>
             <div>
               <p className='text-lg font-semibold text-[#273f27]'>Имя *</p>
-              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Олжас Саматов" required/>
+              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Олжас Саматов" required/>
             </div>
             <div className='my-3'>
               <p className='text-lg font-semibold text-[#273f27]'>Почта *</p>
-              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="olzhas@example.com" required/>
+              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="olzhas@example.com" required/>
             </div>
             <div>
               <p className='text-lg font-semibold text-[#273f27]'>Придумайте пароль *</p>
-              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="olZhas123" required/>
+              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="olZhas123" required/>
             </div>
             <div className='mt-3'>
               <p className='text-lg font-semibold text-[#273f27]'>Повторите пароль *</p>
-              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="olZhas123" required/>
+              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="olZhas123" required/>
             </div>
             <div className='mt-3'>
               <p className='text-lg font-semibold text-[#273f27]'>Регион *</p>
-              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="text" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="Аксу" required/>
+              <input className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="text" value={region} onChange={(e) => setRegion(e.target.value)} placeholder="Аксу" required/>
             </div>
             <div className='flex items-center space-x-1 mt-4'>
               <p>Уже есть аккаунт?</p>
               <button className='hover:border-b hover:border-[#273f27]' onClick={() => router.push('/login')}>Войдите!</button>
             </div>
-            <button type="submit" className="flex w-[40%] mt-5 cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-1 bg-[#78b94d] text-[#111811] text-sm font-bold leading-normal tracking-[0.015em]">
+            <button type="submit" className="flex w-full sm:w-[40%] mt-5 cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-1 bg-[#78b94d] text-[#111811] text-sm font-bold leading-normal tracking-[0.015em]">
               <span className="truncate">Создать</span>
             </button>
           </div>

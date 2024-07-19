@@ -1,8 +1,8 @@
 const HelpPage = () => {
-  return(
-    <div className="w-full border rounded-xl p-5 shadow-lg mt-7">
+  return (
+    <div className="sm:w-[90%] w-full mx-auto border rounded-xl p-5 shadow-lg mt-7">
       <div className="">
-        <p className="text-2xl font-semibold ">Добро пожаловать на Agroonai!</p>
+        <p className="text-2xl font-semibold">Добро пожаловать на Agroonai!</p>
         <p className="mt-7">
           Agroonai — это ваш надежный помощник в мире агробизнеса. Мы стремимся помочь фермерам Казахстана оптимизировать цены на агропродукты, облегчить их работу, используя передовые технологии искусственного интеллекта и анализа данных.
         </p>
@@ -13,7 +13,7 @@ const HelpPage = () => {
           </p>
         </div>
         <div className="mt-7">
-          <p className="text-xl text-[#78b94d]  font-semibold">Как пользоваться нашим сайтом?</p>
+          <p className="text-xl text-[#78b94d] font-semibold">Как пользоваться нашим сайтом?</p>
           <p className="mt-3">
             <strong>Панель управления:</strong> После входа в систему вы попадете на главную страницу, где сможете увидеть обзор ваших доходов, анализ ваших клиентов, заказов и продуктов, а также увидеть свои последние заказы.
           </p>
@@ -28,7 +28,7 @@ const HelpPage = () => {
           </p>
         </div>
         <div className="mt-7">
-          <p className="text-xl text-[#78b94d]  font-semibold">Как ИИ поможет вам?</p>
+          <p className="text-xl text-[#78b94d] font-semibold">Как ИИ поможет вам?</p>
           <p className="mt-3">
             <strong>Анализ данных:</strong> Наш ИИ анализирует огромные объемы рыночных данных, чтобы предоставить вам актуальную информацию о ценах, спросе и предложении.
           </p>
@@ -40,7 +40,7 @@ const HelpPage = () => {
           </p>
         </div>
         <div className="mt-7">
-          <p className="text-xl text-[#78b94d]  font-semibold">Часто задаваемые вопросы (FAQ)</p>
+          <p className="text-xl text-[#78b94d] font-semibold">Часто задаваемые вопросы (FAQ)</p>
           <p className="mt-3">
             <strong>Как получить доступ к рекомендациям ИИ?</strong> После регистрации и входа в систему вы получите доступ к персонализированной панели управления, где будут отображаться рекомендации ИИ.
           </p>
@@ -49,7 +49,7 @@ const HelpPage = () => {
           </p>
         </div>
         <div className="mt-7">
-          <p className="text-xl font-semibold text-[#78b94d] ">Контакты</p>
+          <p className="text-xl font-semibold text-[#78b94d]">Контакты</p>
           <p className="mt-3">
             <strong>Email:</strong> assandalida@gmail.com
           </p>

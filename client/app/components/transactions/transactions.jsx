@@ -20,7 +20,7 @@ const Transactions = () => {
   }, []);
 
   return (
-    <div className="bg-white shadow-lg p-5 border rounded-lg">
+    <div className="bg-white shadow-lg p-5 border rounded-lg w-[550px] sm:w-full">
       <p className="mb-5 text-xl font-semibold text-[#78b94d]">Последние Заказы</p>
       {transactions.length === 0 ? (
         <div className='w-full'>

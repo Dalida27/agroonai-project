@@ -52,20 +52,20 @@ const LoginPage = () => {
 
   return (
     <div className='w-full'>
-      <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden w-[90%] border rounded-lg shadow-lg mx-auto mt-10">
+      <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden sm:w-[90%] border rounded-lg shadow-lg mx-auto mt-10">
         <div className="layout-container flex h-full grow flex-col">
           <div className='flex items-center justify-between'>
-            <Link href="/" className='flex items-center hover:border-b hover:border-black w-[10%] mx-3 my-2'>
+            <Link href="/" className='flex items-center hover:border-b hover:border-black sm:w-[10%] w-[50%] mx-3 my-2'>
               <IoIosArrowRoundBack size={32} />
               <p>На Главную</p>
             </Link>
-            <Link href="/register" className='flex items-center w-[15%] mx-5 my-3'>
-              <p className='font-semibold border-2 rounded-xl px-3 py-2 border-[#78b94d]'>Зарегистрироваться</p>
+            <Link href="/register" className='flex items-center sm:w-[15%] w-[50%] mx-5 my-3'>
+              <p className='font-semibold border-2 rounded-xl sm:px-3 sm:py-2 px-2 py-1 border-[#78b94d]'>Создать аккаунт</p>
             </Link>
           </div>
-          <div className="px-40 flex flex-1 justify-center py-5">
-            <div className="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1">
-              <div className="@container">
+          <div className="px-4 sm:px-40 flex flex-1 justify-center py-5">
+            <div className="layout-content-container flex flex-col w-full sm:w-[512px] py-5 max-w-[960px] flex-1">
+              <div className="sm:@container w-full">
                 <div className="@[480px]:px-4 @[480px]:py-3">
                   <div ref={divRef} className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-white @[480px]:rounded-xl min-h-[218px] border rounded-lg"></div>
                 </div>
@@ -76,11 +76,11 @@ const LoginPage = () => {
                 <div className='py-5 ml-4'>
                   <div>
                     <p className='text-lg font-semibold text-[#273f27]'>Почта *</p>
-                    <input onChange={(e) => setEmail(e.target.value)} value={email} className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' type="email" placeholder='assan@example.com' required />
+                    <input onChange={(e) => setEmail(e.target.value)} value={email} className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' type="email" placeholder='assan@example.com' required />
                   </div>
                   <div>
                     <p className='text-lg font-semibold text-[#273f27] pt-10'>Пароль *</p>
-                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder='assan123' className='mt-3 p-3 border border-[#273f27] rounded-lg w-[50%]' required />
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder='assan123' className='mt-3 p-3 border border-[#273f27] rounded-lg w-full sm:w-[50%]' required />
                   </div>
                   <div className='flex items-center space-x-1 mt-4'>
                     <p>Нет аккаунта?</p>

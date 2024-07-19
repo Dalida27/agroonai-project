@@ -109,7 +109,7 @@ const DashboardPage = () => {
         setIncome(totalIncome);
         setExpenses(totalExpenses);
       } catch (error) {
-        console.error(error);
+        console.error(error); 
       }
     };
     fetchData();
@@ -125,8 +125,8 @@ const DashboardPage = () => {
 
   return user ? (
     <div className="w-full">
-      <div className="flex w-[85%] mx-auto flex-col space-y-5">
-        <div className="flex space-x-5 justify-between">
+      <div className="sm:w-[90%] mx-auto flex flex-col space-y-5">
+        <div className="flex sm:flex-row flex-col sm:space-x-5 sm:space-y-5 space-y-5 justify-between">
           <CardUser clientCount={clientCount} />
           <CardProducts productCount={productCount} />
           <CardTransaction transactionCount={transactionCount} />
@@ -134,8 +134,12 @@ const DashboardPage = () => {
         <div>
           <CardAnalys income={income} expenses={expenses} profit={profit} />
         </div>
-        <ChartProfit data={transactionData} />
-        <Transactions />
+        <div className="sm:overflow-hidden overflow-x-auto">
+          <ChartProfit data={transactionData} />
+        </div>
+        <div className="sm:overflow-hidden overflow-x-auto">
+          <Transactions />
+        </div>
       </div>
     </div>
   ) : null;

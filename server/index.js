@@ -10,6 +10,7 @@ const transactionRouter = require('./routes/transaction');
 const expenseRouter = require('./routes/expense.js')
 const scrapeAndUpload = require('./utils/scrapeAndUpload.js');
 const getRagChain = require("./utils/ragChain.js");
+const voiceAssistantRouter = require('./routes/voiceAssistant');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use('/api/v1/products', productRouter);
 app.use('/api/v1/clients', clientRouter);
 app.use('/api/v1/transactions', transactionRouter);
 app.use('/api/v1/expenses', expenseRouter);
+app.use('/api/v1/voice-assistant', voiceAssistantRouter);
 
 const PORT = process.env.PORT || 8080;
 

@@ -1,3 +1,6 @@
+const axios = require('axios');
+const fs = require('fs');
+const FormData = require('form-data');
 const Product = require("../models/Product.js");
 const getRagChain = require("../utils/ragChain.js");
 

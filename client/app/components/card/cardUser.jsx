@@ -2,7 +2,7 @@ import { MdSupervisedUserCircle } from "react-icons/md"
 
 const CardUser = ({ clientCount }) => {
   return (
-    <div className="bg-white shadow-lg w-1/3 border rounded-lg mt-5 flex flex-col p-5 space-y-3 cursor-pointer hover:bg-neutral-200">
+    <div className="bg-white shadow-lg sm:w-1/3 w-full border rounded-lg mt-5 flex flex-col p-5 space-y-3  hover:bg-neutral-200">
       <div className="flex items-center space-x-2">
         <MdSupervisedUserCircle size={28} />
         <span className="text-xl font-semibold">Все клиенты</span>

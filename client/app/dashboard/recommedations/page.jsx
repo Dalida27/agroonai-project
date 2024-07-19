@@ -44,7 +44,7 @@ const AiPage = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen w-full">
-        <img className='w-[40%] mx-auto' src="/loading.gif" alt="Loading..." />
+        <img className='sm:w-[40%] w-full mx-auto' src="/loading.gif" alt="Loading..." />
       </div>
     );
   }
@@ -63,16 +63,16 @@ const AiPage = () => {
   }
 
   return (
-    <div className="w-full">
-      <div className="mt-10 p-5 border rounded-xl shadow-lg">
-        <div className="mb-5">
-          <p className="text-xl font-semibold ">
-            Советы от вашего личного помощника
-          </p>
-        </div>
-        <div>
-          <p>У вас несколько рекомендаций по ценообразованию на ваши продукты:</p>
-          <table className="w-full border-collapse mt-3">
+    <div className="sm:w-[90%] w-full mx-auto mt-10 p-5 border rounded-xl shadow-lg">
+      <div className="mb-5">
+        <p className="text-xl font-semibold ">
+          Советы от вашего личного помощника
+        </p>
+      </div>
+      <div>
+        <p>У вас несколько рекомендаций по ценообразованию на ваши продукты:</p>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse min-w-[600px] mt-3">
             <thead>
               <tr className="bg-gray-200">
                 <th className="border px-4 py-2 text-left">Название продукта</th>
