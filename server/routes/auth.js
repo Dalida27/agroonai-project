@@ -3,15 +3,32 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const { google } = require('googleapis');
 const User = require('../models/User');
 const authMiddleware = require('../middlewares/auth-middleware');
 
 require('dotenv').config();
 const secretOrKey = process.env.JWT_SECRET;
 
-// @route   POST api/v1/users/register
-// @desc    Register user
-// @access  Public
+const googleConfig = {
+  clientId: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  redirect: process.env.GOOGLE_REDIRECT_URI
+};
+
+const oauth2Client = new google.auth.OAuth2(
+  googleConfig.clientId,
+  googleConfig.clientSecret,
+  googleConfig.redirect
+);
+
+const scopes = [
+  'https://www.googleapis.com/auth/plus.me',
+  'https://www.googleapis.com/auth/userinfo.email',
+  'https://www.googleapis.com/auth/userinfo.profile'
+];
+
+// Регистрация
 router.post('/register', (req, res) => {
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
@@ -37,9 +54,7 @@ router.post('/register', (req, res) => {
   });
 });
 
-// @route   POST api/v1/users/login
-// @desc    Login user and return JWT token
-// @access  Public
+// Логин
 router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -74,17 +89,31 @@ router.post('/login', (req, res) => {
   });
 });
 
-// @route   GET api/v1/users/me
-// @desc    Return current user
-// @access  Private
+// Текущий пользователь
 router.get('/me', authMiddleware, (req, res) => {
-  console.log('got request')
+  console.log('got request');
   res.json({
     id: req.user.id,
     name: req.user.name,
     email: req.user.email,
     region: req.user.region
   });
+});
+
+// Google OAuth2
+router.get('/google', (req, res) => {
+  const url = oauth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: scopes
+  });
+  res.redirect(url);
+});
+
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+  const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, {
+    expiresIn: 360000
+  });
+  res.redirect(`http://localhost:3000/dashboard?token=${token}`);
 });
 
 module.exports = router;

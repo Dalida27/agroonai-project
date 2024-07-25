@@ -7,9 +7,7 @@ const authRouter = require("./routes/auth");
 const productRouter = require('./routes/product');
 const clientRouter = require('./routes/client');
 const transactionRouter = require('./routes/transaction');
-const expenseRouter = require('./routes/expense.js')
-const scrapeAndUpload = require('./utils/scrapeAndUpload.js');
-const getRagChain = require("./utils/ragChain.js");
+const expenseRouter = require('./routes/expense.js');
 const voiceAssistantRouter = require('./routes/voiceAssistant');
 
 const app = express();
@@ -27,10 +25,7 @@ app.use((req, res, next) => {
 
 app.use(cors({credentials: true}));
 app.use(express.json());
-
-
 app.use(passport.initialize());
-
 
 require('./config/passport')(passport);
 
@@ -40,13 +35,10 @@ app.use('/api/v1/clients', clientRouter);
 app.use('/api/v1/transactions', transactionRouter);
 app.use('/api/v1/expenses', expenseRouter);
 app.use('/api/v1/voice-assistant', voiceAssistantRouter);
+app.use('/api/v1/auth', authRouter); 
 
 const PORT = process.env.PORT || 8080;
 
-
-(async () => {
-  await scrapeAndUpload();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-})();
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

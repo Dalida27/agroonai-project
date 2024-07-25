@@ -113,7 +113,7 @@ const Sidebar = () => {
         </ul>
         <button
           onClick={handleLogout}
-          className='ml-2 flex items-center p-5 mt-10 border border-[#78b94d] rounded-lg cursor-pointer w-4/5 hover:bg-[#78b94d]'
+          className='ml-2 flex items-center p-5 sm:mt-10 mt-7 border border-[#78b94d] rounded-lg cursor-pointer w-4/5 hover:bg-[#78b94d]'
         >
           <MdLogout />
           <p className='ml-3'>Выйти</p>

@@ -37,6 +37,10 @@ const LoginPage = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:8080/api/v1/auth/google/callback';
+  };
+
   const divRef = useRef(null);
 
   useEffect(() => {
@@ -93,6 +97,11 @@ const LoginPage = () => {
                   </button>
                 </div>
               </form>
+              <div className="flex px-4 py-3">
+                <button onClick={handleGoogleLogin} className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-1 bg-[#4285F4] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+                  <span className="truncate">Войти через Google</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
